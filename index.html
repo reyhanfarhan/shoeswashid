@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShoesWash.id — Laundry Sepatu & Tas by MasPram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0f6ff;color:#0f172a}
+  a{text-decoration:none;color:inherit}
+
+  /* ── NAV ── */
+  nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid #dbeafe;position:sticky;top:0;z-index:200}
+  .nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+  .nav-logo-icon{width:36px;height:36px;background:#1d4ed8;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .nav-logo-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+  .nav-logo-text{font-weight:800;font-size:18px;color:#1d4ed8;letter-spacing:-0.5px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:14px;font-weight:500;color:#475569;transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:#1d4ed8}
+  .nav-cta{background:#1d4ed8;color:#fff;padding:9px 20px;border-radius:10px;font-size:14px;font-weight:600;transition:background .2s}
+  .nav-cta:hover{background:#1e40af}
+
+  /* ── PAGES ── */
+  .page{display:none}
+  .page.active{display:block}
+
+  /* ══════════════ HOME PAGE ══════════════ */
+
+  /* HERO */
+  .hero-wrap{background:#fff}
+  .hero{padding:72px 40px 60px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:#dbeafe;color:#1d4ed8;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:20px}
+  .hero-badge span{width:6px;height:6px;background:#1d4ed8;border-radius:50%;display:inline-block}
+  .hero-title{font-size:44px;font-weight:800;line-height:1.15;letter-spacing:-1px;color:#0f172a;margin-bottom:18px}
+  .hero-title em{font-style:normal;color:#1d4ed8}
+  .hero-desc{font-size:16px;color:#475569;line-height:1.7;margin-bottom:32px}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-primary{background:#1d4ed8;color:#fff;padding:13px 26px;border-radius:12px;font-size:15px;font-weight:600;transition:background .2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none}
+  .btn-primary:hover{background:#1e40af}
+  .btn-secondary{background:#fff;color:#1d4ed8;padding:13px 26px;border-radius:12px;font-size:15px;font-weight:600;border:1.5px solid #bfdbfe;transition:all .2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+  .btn-secondary:hover{background:#eff6ff;border-color:#93c5fd}
+  .hero-visual{background:#fff;border-radius:24px;border:1.5px solid #dbeafe;padding:28px;display:flex;flex-direction:column;gap:16px}
+  .hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stat-card{background:#eff6ff;border-radius:14px;padding:16px 18px}
+  .stat-num{font-size:26px;font-weight:800;color:#1d4ed8;line-height:1}
+  .stat-label{font-size:12px;color:#64748b;margin-top:4px;font-weight:500}
+  .hero-img-placeholder{background:#dbeafe;border-radius:16px;height:100px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#1d4ed8}
+
+  /* SERVICES */
+  .section{padding:64px 40px;max-width:1100px;margin:0 auto}
+  .section-label{font-size:13px;font-weight:700;color:#1d4ed8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+  .section-title{font-size:32px;font-weight:800;color:#0f172a;letter-spacing:-0.5px;margin-bottom:10px}
+  .section-sub{font-size:16px;color:#64748b;margin-bottom:40px;max-width:500px;line-height:1.6}
+  .cards-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .service-card{background:#fff;border-radius:20px;border:1.5px solid #dbeafe;padding:28px 24px;transition:transform .2s,box-shadow .2s}
+  .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(29,78,216,.10)}
+  .service-icon{width:48px;height:48px;background:#eff6ff;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .service-icon svg{width:24px;height:24px;fill:none;stroke:#1d4ed8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .service-name{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:8px}
+  .service-desc{font-size:14px;color:#64748b;line-height:1.65}
+  .service-link{margin-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#1d4ed8;cursor:pointer}
+
+  /* HOW IT WORKS */
+  .how-section{background:#fff;padding:64px 40px;border-top:1px solid #dbeafe;border-bottom:1px solid #dbeafe}
+  .how-inner{max-width:1100px;margin:0 auto}
+  .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+  .step{text-align:center;padding:24px 16px}
+  .step-num{width:40px;height:40px;background:#1d4ed8;color:#fff;border-radius:12px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .step-title{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px}
+  .step-desc{font-size:13px;color:#64748b;line-height:1.6}
+
+  /* PRODUCT */
+  .product-wrap{background:#f0f6ff;padding:64px 40px}
+  .product-card{background:#1d4ed8;border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1100px;margin:0 auto}
+  .product-badge{display:inline-flex;background:rgba(255,255,255,.2);color:#fff;padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+  .product-title{font-size:26px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:12px}
+  .product-desc{font-size:14px;color:#bfdbfe;line-height:1.7;margin-bottom:24px}
+  .product-btn{background:#fff;color:#1d4ed8;padding:11px 22px;border-radius:10px;font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .product-features{display:flex;flex-direction:column;gap:10px}
+  .feature-item{background:rgba(255,255,255,.12);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px}
+  .feature-icon{width:32px;height:32px;background:rgba(255,255,255,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .feature-icon svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+  .feature-text{font-size:13px;color:#eff6ff;font-weight:500}
+
+  /* CONTACT */
+  .contact-section{background:#f0f6ff;padding:64px 40px}
+  .contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .contact-info{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+  .contact-item{display:flex;align-items:center;gap:12px;background:#fff;border-radius:12px;padding:14px 18px;border:1px solid #dbeafe}
+  .contact-icon{width:36px;height:36px;background:#eff6ff;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .contact-icon svg{width:18px;height:18px;fill:none;stroke:#1d4ed8;stroke-width:2;stroke-linecap:round}
+  .contact-text{font-size:14px;color:#0f172a;font-weight:500}
+  .map-placeholder{background:#dbeafe;border-radius:20px;height:240px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#1d4ed8;border:1.5px solid #bfdbfe}
+
+  /* ══════════════ PRICELIST PAGE ══════════════ */
+  .pl-hero{background:#1d4ed8;padding:40px 32px 32px;text-align:center}
+  .pl-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);color:#fff;padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+  .pl-title{font-size:34px;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:6px}
+  .pl-sub{font-size:14px;color:#bfdbfe;font-weight:500}
+  .pl-period{display:inline-block;background:#fff;color:#1d4ed8;padding:5px 16px;border-radius:999px;font-size:12px;font-weight:700;margin-top:12px}
+
+  .tab-bar{display:flex;justify-content:center;gap:10px;padding:24px 32px 0;flex-wrap:wrap}
+  .tab-btn{padding:9px 22px;border-radius:10px;font-size:14px;font-weight:600;border:1.5px solid #dbeafe;background:#fff;color:#475569;cursor:pointer;transition:all .2s}
+  .tab-btn.active{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+
+  .pl-content{max-width:1100px;margin:0 auto;padding:32px 40px}
+
+  .pl-section-label{font-size:11px;font-weight:700;color:#1d4ed8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+  .pl-section-title{font-size:22px;font-weight:800;color:#0f172a;letter-spacing:-0.5px;margin-bottom:20px}
+
+  .price-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+  .price-card{background:#fff;border-radius:18px;border:1.5px solid #dbeafe;padding:22px 20px;transition:transform .2s,box-shadow .2s;position:relative}
+  .price-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(29,78,216,.10)}
+  .price-card.featured{border-color:#1d4ed8;border-width:2px}
+  .featured-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#1d4ed8;color:#fff;padding:3px 14px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+  .card-emoji{font-size:28px;margin-bottom:10px}
+  .card-name{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:14px}
+  .price-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid #f1f5f9}
+  .price-row:last-child{border-bottom:none}
+  .price-tier{font-size:12px;font-weight:600;color:#64748b;display:flex;align-items:center;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+  .dot-fabric{background:#3b82f6}
+  .dot-leather{background:#8b5cf6}
+  .dot-luxury{background:#f59e0b}
+  .price-val{font-size:14px;font-weight:700;color:#0f172a}
+  .price-val.luxury{color:#d97706}
+
+  .addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
+  .addon-card{background:#fff;border-radius:14px;border:1.5px solid #dbeafe;padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+  .addon-name{font-size:13px;font-weight:600;color:#334155}
+  .addon-price{font-size:14px;font-weight:800;color:#1d4ed8}
+  .addon-sub{font-size:11px;color:#94a3b8;margin-top:2px}
+
+  .incl-box{background:#eff6ff;border-radius:14px;padding:16px 20px;border:1px solid #bfdbfe;margin-bottom:32px}
+  .incl-title{font-size:12px;font-weight:700;color:#1d4ed8;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+  .incl-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .incl-tag{background:#fff;border:1px solid #bfdbfe;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:600;color:#1e40af}
+
+  .notice{background:#fef3c7;border:1px solid #fcd34d;border-radius:12px;padding:14px 18px;font-size:13px;color:#92400e;font-weight:500;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+  .legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#64748b;font-weight:500}
+
+  .cta-bar{background:#1d4ed8;border-radius:18px;padding:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:0}
+  .cta-text{color:#fff;font-size:17px;font-weight:700}
+  .cta-sub{color:#bfdbfe;font-size:13px;margin-top:4px}
+  .cta-btn{background:#fff;color:#1d4ed8;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;display:inline-block}
+
+  /* ── FOOTER ── */
+  footer{background:#0f172a;padding:40px}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+  .footer-brand{font-size:18px;font-weight:800;color:#fff}
+  .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+  .footer-links a{font-size:13px;color:#94a3b8;transition:color .2s;font-weight:500}
+  .footer-links a:hover{color:#60a5fa}
+  .footer-copy{font-size:12px;color:#475569;margin-top:16px;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
+  .social-icons{display:flex;gap:10px}
+  .social-btn{width:36px;height:36px;background:#1e293b;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .social-btn:hover{background:#1d4ed8}
+  .social-btn svg{width:16px;height:16px;fill:none;stroke:#94a3b8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    nav{padding:0 16px}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr;padding:40px 16px}
+    .hero-title{font-size:30px}
+    .cards-grid-3,.steps-grid,.price-cards-grid,.addon-grid{grid-template-columns:1fr}
+    .product-card,.contact-inner{grid-template-columns:1fr}
+    .section,.pl-content{padding:32px 16px}
+    .how-section,.product-wrap,.contact-section{padding:40px 16px}
+    .footer-inner{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M6 20h12M3 17c1-3 3-5 9-5s8 2 9 5M9 7c0 2.2 1.3 4 3 4s3-1.8 3-4"/></svg>
+    </div>
+    <span class="nav-logo-text">ShoesWash.id</span>
+  </div>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home');return false" id="nav-home" class="active">Beranda</a>
+    <a href="https://shoeswash.id/cuci-sepatu-dan-tas" target="_blank">Cuci Sepatu & Tas</a>
+    <a href="https://shoeswash.id/sabun-sepatu" target="_blank">Sabun CTIIGWA</a>
+    <a href="#" onclick="showPage('pricelist');return false" id="nav-pricelist">Pricelist</a>
+    <a href="https://shoeswash.id/gallery" target="_blank">Gallery</a>
+    <a href="https://shoeswash.id/tentang-kami" target="_blank">Tentang Kami</a>
+  </div>
+  <a href="https://wa.me/+6287780146161" target="_blank" class="nav-cta">Pesan Sekarang →</a>
+</nav>
+
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero">
+      <div>
+        <div class="hero-badge"><span></span> #1 Laundry Sepatu Indonesia</div>
+        <h1 class="hero-title">Sepatu Bersih,<br><em>Tampil Lebih</em><br>Percaya Diri</h1>
+        <p class="hero-desc">Laundry sepatu & tas profesional dengan teknologi terkini. Bersih maksimal, warna tetap cerah, kembali seperti baru.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/+6287780146161" target="_blank" class="btn-primary">Cuci Sepatuku →</a>
+          <button class="btn-secondary" onclick="showPage('pricelist')">Lihat Harga</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-stat-grid">
+          <div class="stat-card">
+            <div class="stat-num">10K+</div>
+            <div class="stat-label">Sepatu Dicuci</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4.9★</div>
+            <div class="stat-label">Rating Pelanggan</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">24 Jam</div>
+            <div class="stat-label">Proses Express</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Garansi Bersih</div>
+          </div>
+        </div>
+        <div class="hero-img-placeholder">✨ ShoesWash by MasPram</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div style="background:#f0f6ff">
+    <div class="section">
+      <div class="section-label">Layanan Kami</div>
+      <div class="section-title">Semua Kebutuhan<br>Sepatu & Tasmu</div>
+      <div class="section-sub">Dari cuci harian sampai produk perawatan, ShoesWash siap jaga sneakers & tas kesayanganmu.</div>
+      <div class="cards-grid-3">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h12"/><circle cx="19" cy="18" r="2"/></svg>
+          </div>
+          <div class="service-name">Laundry Sepatu & Tas</div>
+          <div class="service-desc">Cuci bersih berbagai jenis sepatu & tas dengan teknik khusus yang aman untuk semua bahan — kulit, kanvas, mesh, dan lainnya.</div>
+          <a href="https://shoeswash.id/cuci-sepatu-dan-tas" target="_blank" class="service-link">Selengkapnya →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 004 0M9 3a2 2 0 014 0"/></svg>
+          </div>
+          <div class="service-name">Sabun Sepatu CTIIGWA</div>
+          <div class="service-desc">Sabun cuci sepatu & tas eksklusif by MasPram. Formula khusus yang ampuh membersihkan noda tanpa merusak material sepatu kesayanganmu.</div>
+          <a href="https://shoeswash.id/sabun-sepatu" target="_blank" class="service-link">Selengkapnya →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="service-name">Premium Care</div>
+          <div class="service-desc">Layanan perawatan ekstra untuk koleksi sneakers premium atau limited edition. Proses hati-hati dengan hasil terbaik yang bisa kamu percaya.</div>
+          <span class="service-link" onclick="showPage('pricelist')">Lihat Harga →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section">
+    <div class="how-inner">
+      <div class="section-label">Cara Kerja</div>
+      <div class="section-title">Gampang Banget, Cuma 4 Langkah</div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Pesan via WhatsApp</div>
+          <div class="step-desc">Hubungi kami di +6287780146161 dan ceritakan kebutuhan cucianmu.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">Antar atau Jemput</div>
+          <div class="step-desc">Drop off langsung atau minta layanan jemput antar ke rumahmu.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">Proses Cuci</div>
+          <div class="step-desc">Kami bersihkan dengan standar profesional dan produk pilihan.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-title">Siap Dipakai Lagi</div>
+          <div class="step-desc">Sepatu & tasmu bersih, wangi, dan siap tampil percaya diri.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT HIGHLIGHT -->
+  <div class="product-wrap">
+    <div class="product-card">
+      <div>
+        <div class="product-badge">Produk Unggulan</div>
+        <h2 class="product-title">Sabun Sepatu & Tas<br>CTIIGWA by MasPram</h2>
+        <p class="product-desc">Formula eksklusif untuk membersihkan sepatu & tas secara menyeluruh. Aman untuk semua bahan, efektif melawan noda membandel, dan bikin material awet lebih lama.</p>
+        <a href="https://shoeswash.id/sabun-sepatu" target="_blank" class="product-btn">Beli Sekarang →</a>
+      </div>
+      <div class="product-features">
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="feature-text">Aman untuk kulit, kanvas, dan mesh</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="feature-text">Formula anti-jamur & anti-bakteri</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="feature-text">Cocok untuk cuci sendiri di rumah</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="feature-text">Digunakan oleh ribuan pelanggan setia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label">Hubungi Kami</div>
+        <div class="section-title">Ada Pertanyaan?<br>Kami Siap Bantu</div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <span class="contact-text">+62 877-8014-6161</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <span class="contact-text">CustomerCare@shoeswash.id</span>
+          </div>
+          <a href="https://wa.me/+6287780146161" target="_blank" class="btn-primary" style="width:fit-content">Chat WhatsApp Sekarang →</a>
+        </div>
+      </div>
+      <div class="map-placeholder">📍 ShoesWash.id — Jakarta, Indonesia</div>
+    </div>
+  </div>
+
+</div><!-- end page-home -->
+
+
+<!-- ══════════ PRICELIST PAGE ══════════ -->
+<div id="page-pricelist" class="page">
+
+  <div class="pl-hero">
+    <div class="pl-badge">✦ Harga Resmi</div>
+    <div class="pl-title">Price List ShoesWash.id</div>
+    <div class="pl-sub">Layanan cuci profesional untuk sepatu & tas kesayanganmu</div>
+    <div class="pl-period">🗓 Berlaku Januari 2026</div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('sepatu')">👟 Sepatu</button>
+    <button class="tab-btn" onclick="showTab('tas')">🎒 Tas</button>
+    <button class="tab-btn" onclick="showTab('addon')">✨ Add On</button>
+  </div>
+
+  <div class="pl-content">
+
+    <div class="legend">
+      <div class="legend-item"><span class="dot dot-fabric"></span> Fabric</div>
+      <div class="legend-item"><span class="dot dot-leather"></span> Leather</div>
+      <div class="legend-item"><span class="dot dot-luxury"></span> Luxury Wash</div>
+    </div>
+
+    <!-- TAB SEPATU -->
+    <div id="tab-sepatu">
+      <div class="pl-section-label">Layanan Utama</div>
+      <div class="pl-section-title">Sport, Casual & Formal Shoes</div>
+      <div class="price-cards-grid">
+        <div class="price-card featured">
+          <div class="featured-tag">Terpopuler</div>
+          <div class="card-emoji">👟</div>
+          <div class="card-name">Sport, Casual & Formal</div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 70.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 80.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 350.000</span></div>
+        </div>
+        <div class="price-card">
+          <div class="card-emoji">🥾</div>
+          <div class="card-name">Boots</div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 90.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 95.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 360.000</span></div>
+        </div>
+        <div class="price-card">
+          <div class="card-emoji">🩴</div>
+          <div class="card-name">Sandals</div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 30.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 40.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 150.000</span></div>
+        </div>
+      </div>
+      <div class="incl-box">
+        <div class="incl-title">Semua layanan sudah termasuk</div>
+        <div class="incl-tags">
+          <span class="incl-tag">✓ Regular Cleaning</span>
+          <span class="incl-tag">✓ Anti Bacterial</span>
+          <span class="incl-tag">✓ Retouch</span>
+          <span class="incl-tag">✓ Re-Shape</span>
+          <span class="incl-tag">✓ Hard Wax Polishing (Luxury)</span>
+          <span class="incl-tag">✓ Spot Detailing (Luxury)</span>
+          <span class="incl-tag">✓ Pro Coating (Luxury)</span>
+        </div>
+      </div>
+      <div class="notice">⚠️ <strong>WE DO NOT ACCEPT SHOE REPAIRS</strong> — Hanya layanan cuci & perawatan</div>
+    </div>
+
+    <!-- TAB TAS -->
+    <div id="tab-tas" style="display:none">
+      <div class="pl-section-label">Layanan Tas</div>
+      <div class="pl-section-title">Bag — Semua Ukuran</div>
+      <div class="price-cards-grid">
+        <div class="price-card">
+          <div class="card-emoji">👜</div>
+          <div class="card-name">Bag Size M <span style="font-size:11px;color:#94a3b8;font-weight:500">(14–20L)</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 70.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 80.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 350.000</span></div>
+        </div>
+        <div class="price-card featured">
+          <div class="featured-tag">Terpopuler</div>
+          <div class="card-emoji">🎒</div>
+          <div class="card-name">Bag Size L <span style="font-size:11px;color:#94a3b8;font-weight:500">(20–45L)</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 80.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 85.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 450.000</span></div>
+        </div>
+        <div class="price-card">
+          <div class="card-emoji">🏕️</div>
+          <div class="card-name">Bag Size XL <span style="font-size:11px;color:#94a3b8;font-weight:500">(45L+)</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 100.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 120.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 550.000</span></div>
+        </div>
+      </div>
+      <div class="price-cards-grid">
+        <div class="price-card">
+          <div class="card-emoji">👝</div>
+          <div class="card-name">Bag Size S</div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 35.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 45.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 250.000</span></div>
+        </div>
+        <div class="price-card">
+          <div class="card-emoji">🧢</div>
+          <div class="card-name">Cap & Hat</div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-fabric"></span>Fabric</span><span class="price-val">Rp 30.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-leather"></span>Leather</span><span class="price-val">Rp 40.000</span></div>
+          <div class="price-row"><span class="price-tier"><span class="dot dot-luxury"></span>Luxury Wash</span><span class="price-val luxury">Rp 100.000</span></div>
+        </div>
+        <div style="visibility:hidden"></div>
+      </div>
+      <div class="incl-box">
+        <div class="incl-title">Semua layanan sudah termasuk</div>
+        <div class="incl-tags">
+          <span class="incl-tag">✓ Regular Cleaning</span>
+          <span class="incl-tag">✓ Anti Bacterial</span>
+          <span class="incl-tag">✓ Retouch</span>
+          <span class="incl-tag">✓ Re-Shape</span>
+          <span class="incl-tag">✓ Hard Wax Polishing (Luxury)</span>
+          <span class="incl-tag">✓ Spot Detailing (Luxury)</span>
+          <span class="incl-tag">✓ Pro Coating (Luxury)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB ADD ON -->
+    <div id="tab-addon" style="display:none">
+      <div class="pl-section-label">Tambahan Layanan</div>
+      <div class="pl-section-title">Add On Services</div>
+      <div class="addon-grid">
+        <div class="addon-card">
+          <div><div class="addon-name">⚡ One Night Service</div><div class="addon-sub">Pengerjaan kilat dalam semalam</div></div>
+          <div class="addon-price">+Rp 20.000</div>
+        </div>
+        <div class="addon-card">
+          <div><div class="addon-name">🌟 Spotless Tech</div><div class="addon-sub">Pembersihan noda membandel ekstra</div></div>
+          <div class="addon-price">+Rp 20.000</div>
+        </div>
+        <div class="addon-card">
+          <div><div class="addon-name">💛 Unyellowing</div><div class="addon-sub">Menghilangkan kuning pada sol</div></div>
+          <div class="addon-price">+Rp 20.000</div>
+        </div>
+        <div class="addon-card">
+          <div><div class="addon-name">🔄 Dirty Turn</div><div class="addon-sub">Untuk sepatu/tas sangat kotor</div></div>
+          <div class="addon-price">+Rp 20.000</div>
+        </div>
+      </div>
+      <div class="notice">💡 Add on bisa dikombinasikan dengan layanan utama manapun. Hubungi kami via WhatsApp untuk konsultasi gratis.</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-bar">
+      <div>
+        <div class="cta-text">Siap cuci sepatu & tasmu? 👟</div>
+        <div class="cta-sub">Hubungi kami via WhatsApp — fast response, no ribet!</div>
+      </div>
+      <a href="https://wa.me/+6287780146161" target="_blank" class="cta-btn">Chat WhatsApp →</a>
+    </div>
+  </div>
+
+</div><!-- end page-pricelist -->
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ShoesWash.id</div>
+      <div style="font-size:12px;color:#64748b;margin-top:4px">Laundry Sepatu & Tas by MasPram</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://shoeswash.id/cuci-sepatu-dan-tas" target="_blank">Cuci Sepatu & Tas</a>
+      <a href="https://shoeswash.id/sabun-sepatu" target="_blank">Sabun CTIIGWA</a>
+      <a href="#" onclick="showPage('pricelist');return false">Pricelist</a>
+      <a href="https://shoeswash.id/gallery" target="_blank">Gallery</a>
+      <a href="https://shoeswash.id/tentang-kami" target="_blank">Tentang Kami</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/official.shoeswash.id" target="_blank" class="social-btn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61559515541236" target="_blank" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://wa.me/+6287780146161" target="_blank" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 ShoesWash.id — All Rights Reserved · CustomerCare@shoeswash.id · +62 877-8014-6161</div>
+</footer>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + name);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showTab(name) {
+  ['sepatu','tas','addon'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', ['sepatu','tas','addon'][i] === name);
+  });
+}
+</script>
+</body>
+</html>
